@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
-public class RepotUser {
+public class ReportUser {
 
 	public static void main(String[] args) {
 		String[] id_list = { "muzi", "frodo", "apeach", "neo" };
