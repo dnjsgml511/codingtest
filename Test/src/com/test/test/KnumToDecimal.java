@@ -1,8 +1,5 @@
 package com.test.test;
 
-import java.util.Arrays;
-import java.util.stream.Collectors;
-
 public class KnumToDecimal {
 
 	public static void main(String[] args) {
