@@ -36,7 +36,6 @@ public class Tuple {
 				tmp.add(Integer.parseInt(data));
 			}
 
-			Collections.sort(tmp, Collections.reverseOrder());
 			list.add(tmp);
 		}
 
@@ -50,11 +49,11 @@ public class Tuple {
 			}
 		}
 
-		System.out.println(list);
-		
 		int[] ret = new int[list.size()];
+		List<Integer> tmp = new ArrayList<Integer>();
 		for (int i = 0; i < list.size(); i++) {
-			ret[i] = list.get(i).get(0);
+			List<Integer> target = list.get(i);
+			
 		}
 
 		return ret;
