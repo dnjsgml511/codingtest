@@ -2,8 +2,6 @@ package com.test.test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 public class Tuple {
@@ -49,14 +47,21 @@ public class Tuple {
 			}
 		}
 
-		int[] ret = new int[list.size()];
-		List<Integer> tmp = new ArrayList<Integer>();
+		List<Integer> removelist = new ArrayList<Integer>();
 		for (int i = 0; i < list.size(); i++) {
-			List<Integer> target = list.get(i);
-			
+			List<Integer> tmp = list.get(i);
+
+			tmp.removeAll(removelist);
+			int target = tmp.get(0);
+			removelist.add(target);
+		}
+		
+		int[] answer = new int[removelist.size()];
+		for (int i = 0; i < removelist.size(); i++) {
+			answer[i] = removelist.get(i);
 		}
 
-		return ret;
+		return answer;
 	}
 
 }
