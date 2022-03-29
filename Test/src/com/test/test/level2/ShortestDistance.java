@@ -31,9 +31,7 @@ public class ShortestDistance {
 
 		visited = new boolean[n][m];
 
-		bfs(0, 0, map);
-
-		return 0;
+		return bfs(0, 0, map);
 
 	}
 
@@ -47,9 +45,20 @@ public class ShortestDistance {
 			Node node = q.poll();
 			if (node.x == n - 1 && node.y == m - 1)
 				return node.cost;
+			
+			for(int i = 0; i < 4; i++) {
+				int nx = node.x + dx[i];
+				int ny = node.y + dy[i];
+				if(nx >= 0 && ny >= 0 && nx < n && ny < m) {
+					if(map[nx][ny] == 1 && !visited[nx][ny]) {
+						visited[nx][ny] = true;
+						q.offer(new Node(nx, ny, node.cost + 1));
+					}
+				}
+			}
 		}
 
-		return 0;
+		return -1;
 	}
 
 	private static class Node {
