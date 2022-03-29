@@ -1,4 +1,4 @@
-package com.test.test.level1;
+package com.test.test.programers.level1;
 
 import java.util.Arrays;
 import java.util.Collections;

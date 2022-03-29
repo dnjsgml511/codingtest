@@ -1,4 +1,4 @@
-package com.test.test.level2;
+package com.test.test.programers.level2;
 
 import java.util.Arrays;
 import java.util.LinkedList;
@@ -36,11 +36,11 @@ public class ShortestDistance {
 	}
 
 	private static int bfs(int x, int y, int[][] map) {
-
+		
 		Queue<Node> q = new LinkedList<Node>();
 		q.offer(new Node(x, y, 1));
 		visited[x][y] = true;
-
+		
 		while (!q.isEmpty()) {
 			Node node = q.poll();
 			if (node.x == n - 1 && node.y == m - 1)
@@ -62,6 +62,11 @@ public class ShortestDistance {
 	}
 
 	private static class Node {
+		@Override
+		public String toString() {
+			return "Node [x=" + x + ", y=" + y + ", cost=" + cost + "]";
+		}
+
 		int x;
 		int y;
 		int cost;

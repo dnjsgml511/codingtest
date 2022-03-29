@@ -1,4 +1,4 @@
-package com.test.test;
+package com.test.test.programers.level2;
 
 public class ForecatingTable {
 	public static void main(String[] args) {
