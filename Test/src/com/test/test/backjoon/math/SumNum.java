@@ -1,4 +1,4 @@
-package com.test.test.backjoon;
+package com.test.test.backjoon.math;
 
 import java.util.Arrays;
 import java.util.Scanner;
