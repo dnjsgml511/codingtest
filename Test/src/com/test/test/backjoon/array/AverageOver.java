@@ -23,10 +23,9 @@ public class AverageOver {
 			double average = sum / count;
 
 			double over = students.stream().filter(c -> c > average).count() / count;
-			double percent = Math.round(over * 10000.0) / 100.0;
+			double percent = Math.round(over * 100000.0) / 1000.0;
 			
-			System.out.println(percent);
-			System.out.println(String.format("%.3f", percent));
+			System.out.println(String.format("%.3f", percent) + "%");
 		}
 	}
 }
