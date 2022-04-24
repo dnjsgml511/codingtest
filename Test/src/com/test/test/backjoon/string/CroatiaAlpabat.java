@@ -9,19 +9,19 @@ public class CroatiaAlpabat {
 
 		String text = sc.nextLine();
 
-		String[] arr = { "c=", "c-", "dz=", "d-", "lj", "nj", "s=", "z=" };
-
+		String[] arr = { "c=", "c-", "dz=", "d-", "lj", "nj", "s=", "z="};
+		
 		int answer = 0;
 		for (int i = 0; i < arr.length; i++) {
-			int beforeLength = text.replaceAll(" ", "").length();
-			text = text.replaceAll(arr[i], " ");
-			int afterLength = text.replaceAll(" ", "").length();
-
-			answer += (beforeLength - afterLength) / 2;
+			int count = 0;
+			while(text.indexOf(arr[i]) != -1) {
+				text = text.replaceFirst(arr[i], " ");
+				count++;
+			}
+			answer += count;
 		}
-
+		
 		text = text.replaceAll(" ", "");
 		System.out.println(answer + text.length());
 	}
-
 }
