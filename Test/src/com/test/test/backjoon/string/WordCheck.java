@@ -6,45 +6,40 @@ import java.util.Scanner;
 
 public class WordCheck {
 
-	private static boolean check(String checkword, String newword) {
+	private static boolean containword(String word1, String word2) {
 
-		if (checkword.equals(newword))
-			return true;
-
-		String longword = checkword.length() > newword.length() ? checkword : newword;
-		String shortword = checkword.length() <= newword.length() ? checkword : newword;
-
+		String longword = word1.length() > word2.length() ? word1 : word2;
+		String shortword = word1.length() <= word2.length() ? word1 : word2;
+		
 		String[] split = shortword.split("");
-
 		for (String data : split) {
 			int index = longword.indexOf(data);
-			if (index == -1) {
+			if(index == -1) {
 				return false;
 			}
+			System.out.println(data);
 			longword = longword.substring(index + 1);
+			System.out.println(longword);
 		}
 
-		return true;
+		return false;
 	}
-
-	private static List<String> list;
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 
 		int loop = sc.nextInt();
 
-		list = new ArrayList<>();
+		List<String> list = new ArrayList<String>();
 		for (int i = 0; i < loop; i++) {
 			String word = sc.next();
 
 			for (int j = 0; j < list.size(); j++) {
-				boolean check = check(list.get(j), word);
-				if (!check)
-					break;
+				containword(word, list.get(j));
 			}
 
 			list.add(word);
+			System.out.println();
 		}
 
 	}
