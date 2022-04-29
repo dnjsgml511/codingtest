@@ -1,6 +1,5 @@
 package com.test.test.programers.level2;
 
-import java.util.Arrays;
 import java.util.Scanner;
 import java.util.Stack;
 
