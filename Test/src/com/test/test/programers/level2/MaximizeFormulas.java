@@ -34,7 +34,7 @@ public class MaximizeFormulas {
 				.collect(Collectors.toList());
 		
 		for(List<String> strings : list) {
-			answer = Math.max(answer, solve(strings, numbers, collect));
+//			answer = Math.max(answer, sol(strings, numbers, collect));
 		}
 		
 		return 0;
