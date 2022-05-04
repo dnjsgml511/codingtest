@@ -1,8 +1,7 @@
 package com.test.test.backjoon.math1;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
+import java.util.TreeSet;
 
 public class ACMHotel {
 
@@ -10,27 +9,19 @@ public class ACMHotel {
 		Scanner sc = new Scanner(System.in);
 
 		int loop = sc.nextInt();
-
-		List<Integer> list = new ArrayList<>();
+		
 		for (int i = 0; i < loop; i++) {
 			int height = sc.nextInt();
 			int width = sc.nextInt();
 			int number = sc.nextInt();
 
-			int low = number % height;
+			int floor = number % height;
 			int deep = number / height + 1;
-			if (low == 0) {
-				low = 1;
-				deep--;
-			}
 			
-			list.add(low * 100 + deep);
-//			System.out.println(low * 100 + deep);
-		}
-		
-		System.out.println();
-		for (Integer data : list) {
-			System.out.println(data);
+			System.out.println(floor);
+			System.out.println(deep);
+
+			System.out.println(floor * 100 + deep);
 		}
 	}
 
