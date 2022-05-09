@@ -21,10 +21,19 @@ public class Taret {
 			int x = 0;
 			int y = 0;
 			
-			double distance = Math.sqrt((x1 - x2) * (y1 - y2) + (y1- y2) * (y1- y2));
+			double distance = Math.sqrt((x1 - x2) * (x1 - x2) + (y1- y2) * (y1- y2));
 			System.out.println(distance);
 		}
 
 	}
 
 }
+
+/**
+
+3
+0 0 13 40 0 37
+0 0 3 0 7 4
+1 1 1 1 1 5
+
+*/
