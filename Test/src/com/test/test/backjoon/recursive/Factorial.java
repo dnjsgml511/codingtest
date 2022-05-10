@@ -10,6 +10,11 @@ public class Factorial {
 		int num = sc.nextInt();
 		sc.close();
 
+		if(num == 0 || num == 1) {
+			System.out.println(1);
+			return;
+		}
+		
 		sum = num;
 		fact(--num);
 
@@ -17,11 +22,8 @@ public class Factorial {
 	}
 
 	static long sum;
-
 	static void fact(int num) {
-		System.out.println(sum);
-		sum *= num;
-		num--;
+		sum *= num--;
 		if (num == 0)
 			return;
 
