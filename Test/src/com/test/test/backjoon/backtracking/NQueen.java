@@ -1,38 +1,22 @@
 package com.test.test.backjoon.backtracking;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.util.Arrays;
-import java.util.Scanner;
 
 public class NQueen {
 
-	public static void main(String[] args) {
-		System.out.println("start!");
-		Runtime.getRuntime().gc();
-		long beforeTime = System.currentTimeMillis();
-		Scanner sc = new Scanner(System.in);
-		int num = sc.nextInt();
-		sc.close();
-		int[] arr = new int[num];
-		for (int i = 0; i < num; i++) {
-			arr[i] = i;
-		}
-		for (int i = 0; i < num; i++) {
-			int[][] newpan = addQueen(new int[num][num], 0, i);
-			backtracking(newpan, 1);
-		}
+	public static void main(String[] args) throws Exception {
+		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+		int num = Integer.parseInt(reader.readLine());
+		backtracking(new int[num][num], 0);
 
 		System.out.println(answer);
-		long afterTime = System.currentTimeMillis(); // 코드 실행 후에 시간 받아오기
-		long secDiffTime = (afterTime - beforeTime)/1000; //두 시간에 차 계산
-		System.out.println("시간차이(m) : "+secDiffTime);
-		long usedMemory = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
-		System.out.print(usedMemory + " bytes");
 	}
 
 	static int answer;
 
 	static void backtracking(int[][] board, int depth) {
-		
 		if (depth >= board.length) {
 			answer++;
 			return;
@@ -45,10 +29,10 @@ public class NQueen {
 			}
 		}
 	}
-	
-	static int[][] deepCopy(int[][] board){
+
+	static int[][] deepCopy(int[][] board) {
 		int[][] dest = new int[board.length][board.length];
-		for(int j = 0; j < dest.length; j++) {
+		for (int j = 0; j < dest.length; j++) {
 			dest[j] = board[j].clone();
 		}
 		return dest;
@@ -79,9 +63,9 @@ public class NQueen {
 
 		return board;
 	}
-	
+
 	static void print(int[][] board) {
-		for(int[] data : board) {
+		for (int[] data : board) {
 			System.out.println(Arrays.toString(data));
 		}
 		System.out.println();
