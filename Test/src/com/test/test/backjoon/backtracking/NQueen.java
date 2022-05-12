@@ -6,72 +6,76 @@ import java.util.Scanner;
 public class NQueen {
 
 	public static void main(String[] args) {
+		System.out.println("start!");
 		Scanner sc = new Scanner(System.in);
-		size = sc.nextInt();
+		int num = sc.nextInt();
 		sc.close();
-
-		setPan();
-
-		setAttackLine(2, 2);
-
-		print();
-	}
-
-	static boolean[][] pan;
-	static int size;
-
-	static void setPan() {
-		pan = new boolean[size][size];
-	}
-
-	static void checkAttackLine(int x, int y) {
-		for (int i = 0; i < size; i++) {
-			pan[i][y] = true;
-			pan[x][i] = true;
-
-			if (x - i >= 0 && y - i >= 0) {
-				pan[x - i][y - i] = true;
-			}
-			if (x - i >= 0 && y + i <= size - 1) {
-				pan[x - i][y + i] = true;
-			}
-
-			if (x + i <= size - 1 && y + i <= size - 1) {
-				pan[x + i][y + i] = true;
-			}
-
-			if (x + i <= size - 1 && y - i >= 0) {
-				pan[x + i][y - i] = true;
-			}
+		int[] arr = new int[num];
+		for (int i = 0; i < num; i++) {
+			arr[i] = i;
 		}
+
+		for (int i = 0; i < num; i++) {
+			int[][] newpan = addQueen(new int[num][num], 0, i);
+			dfs(newpan, 1);
+		}
+
+		System.out.println(answer);
 	}
-	
-	static void setAttackLine(int x, int y) {
-		for (int i = 0; i < size; i++) {
-			pan[i][y] = true;
-			pan[x][i] = true;
 
-			if (x - i >= 0 && y - i >= 0) {
-				pan[x - i][y - i] = true;
-			}
-			if (x - i >= 0 && y + i <= size - 1) {
-				pan[x - i][y + i] = true;
-			}
+	static int answer;
 
-			if (x + i <= size - 1 && y + i <= size - 1) {
-				pan[x + i][y + i] = true;
-			}
+	static void dfs(int[][] pan, int depth) {
 
-			if (x + i <= size - 1 && y - i >= 0) {
-				pan[x + i][y - i] = true;
+		if (depth >= pan.length) {
+			answer++;
+			return;
+		}
+
+		for (int i = 0; i < pan.length; i++) {
+			if (pan[depth][i] == 0) {
+				dfs(addQueen(pan, depth, i), depth + 1);
 			}
 		}
 	}
 
-	static void print() {
-		for (int i = 0; i < size; i++) {
-			System.out.println(Arrays.toString(pan[i]));
-		}
+	static int[][] deepCopy(int[][] pan) {
+		int[][] dest = new int[pan.length][pan.length];
+		dest = pan.clone();
+		return dest;
 	}
 
+	static int[][] addQueen(int[][] pan, int depth, int site) {
+		if (pan == null) {
+			return null;
+		}
+		if (pan[depth][site] == 2) {
+			return null;
+		}
+
+		for (int i = 0; i < pan.length; i++) {
+			pan[depth][i] = 2;
+			pan[i][site] = 2;
+		}
+		pan[depth][site] = 1;
+
+		for (int i = 1; i < pan.length - depth; i++) {
+			if (site + i < pan.length) {
+				pan[depth + i][site + i] = 2;
+			}
+			if (site - i >= 0) {
+				pan[depth + i][site - i] = 2;
+			}
+		}
+
+		return pan;
+	}
+
+	static void print(int[][] pan) {
+		if (pan != null)
+			for (int[] data : pan) {
+				System.out.println(Arrays.toString(data));
+			}
+		System.out.println();
+	}
 }
