@@ -8,66 +8,39 @@ public class NQueen {
 
 	public static void main(String[] args) throws Exception {
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-		int num = Integer.parseInt(reader.readLine());
-		backtracking(new int[num][num], 0);
+		n = Integer.parseInt(reader.readLine());
+		arr = new int[n];
+		nQueen(0);
+		System.out.println(count);
 
-		System.out.println(answer);
 	}
 
-	static int answer;
+	static int[] arr;
+	static int n;
+	static int count = 0;
 
-	static void backtracking(int[][] board, int depth) {
-		if (depth >= board.length) {
-			answer++;
+	static void nQueen(int depth) {
+		if (depth == n) {
+			count++;
 			return;
 		}
-
-		for (int i = 0; i < board.length; i++) {
-			if (board[depth][i] == 0) {
-				int[][] dest = deepCopy(board);
-				backtracking(addQueen(dest, depth, i), depth + 1);
+		for (int i = 0; i < n; i++) {
+			arr[depth] = i;
+			if (possibility(depth)) {
+				nQueen(depth + 1);
 			}
 		}
 	}
 
-	static int[][] deepCopy(int[][] board) {
-		int[][] dest = new int[board.length][board.length];
-		for (int j = 0; j < dest.length; j++) {
-			dest[j] = board[j].clone();
-		}
-		return dest;
-	}
-
-	static int[][] addQueen(int[][] board, int depth, int site) {
-		if (board == null) {
-			return null;
-		}
-		if (board[depth][site] == 2) {
-			return null;
-		}
-
-		for (int i = 0; i < board.length; i++) {
-			board[depth][i] = 2;
-			board[i][site] = 2;
-		}
-		board[depth][site] = 1;
-
-		for (int i = 1; i < board.length - depth; i++) {
-			if (site + i < board.length) {
-				board[depth + i][site + i] = 2;
-			}
-			if (site - i >= 0) {
-				board[depth + i][site - i] = 2;
+	static boolean possibility(int col) {
+		for (int i = 0; i < col; i++) {
+			if (arr[col] == arr[i]) {
+				return false;
+			} else if (Math.abs(col - i) == Math.abs(arr[col] - arr[i])) {
+				return false;
 			}
 		}
-
-		return board;
+		return true;
 	}
 
-	static void print(int[][] board) {
-		for (int[] data : board) {
-			System.out.println(Arrays.toString(data));
-		}
-		System.out.println();
-	}
 }
