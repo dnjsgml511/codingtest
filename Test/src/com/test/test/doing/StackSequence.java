@@ -12,33 +12,21 @@ public class StackSequence {
 		int loop = Integer.parseInt(br.readLine());
 
 		int[] arr = new int[loop];
-		int max = 0, min = Integer.MAX_VALUE;
 		for (int i = 0; i < loop; i++) {
 			int num = Integer.parseInt(br.readLine());
-			max = Math.max(max, num);
-			min = Math.min(min, num);
 			arr[i] = num;
 		}
 
-		int gap = (max + min) / loop;
-		int pop = max;
-		Stack<Integer> stack = new Stack<Integer>();
-		for (int i = 0; i < arr.length; i++) {
-			int num = arr[i];
-			if (num == pop) {
-				stack.pop();
-				System.out.println("-");
-				pop -= gap;
-				while(pop == stack.peek()) {
-					stack.pop();
-					pop -= gap;
-					System.out.println("-");
-				}
-			} else {
-				stack.push(num);
-				System.out.println("+");
+		Character[] answer = new Character[loop * 2];
+		
+		Stack<Integer> stack = new Stack<>();
+		for (int i = 0; i < loop; i++) {
+			for(int j = 1; j < i; j++) {
+				
 			}
+			
+			System.out.println("-");
 		}
-	}
 
+	}
 }
