@@ -11,11 +11,6 @@ public class RGBDistance {
 
 	}
 
-	
-	static paint(int num, int color) {
-		if()
-	}
-
 }
 
 /**
