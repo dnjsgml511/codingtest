@@ -1,4 +1,4 @@
-package com.test.test.doing;
+package com.test.test.success.backjoon.sliver.five.greedy;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -25,8 +25,9 @@ public class Thirty {
 
 		BigInteger num = new BigInteger(sb.toString());
 		BigInteger thirty = new BigInteger("30");
+		BigInteger zero = new BigInteger("0");
 		
-		if(!num.remainder(thirty).equals(0)) {
+		if(!num.remainder(thirty).equals(zero)) {
 			bw.write("-1");
 		}else {
 			bw.write(sb.toString());
