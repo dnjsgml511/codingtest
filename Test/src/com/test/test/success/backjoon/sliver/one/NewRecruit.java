@@ -37,7 +37,6 @@ public class NewRecruit {
 			bw.write(Integer.toString(count));
 			bw.write("\n");
 		}
-		
 
 		bw.flush();
 		bw.close();
