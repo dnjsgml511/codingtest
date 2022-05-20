@@ -1,4 +1,4 @@
-package com.test.test.success.backjoon.sliver.five.greedy;
+package com.test.test.success.backjoon.sliver.five;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
