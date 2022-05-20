@@ -24,6 +24,8 @@ public class TyingNum {
 		Collections.sort(list);
 		int sum = 0;
 
+		System.out.println(list);
+		
 		while (list.size() != 0) {
 
 			int target = list.remove(0);
@@ -37,6 +39,9 @@ public class TyingNum {
 			} else {
 				sum += target;
 			}
+			
+			System.out.println(sum + " / " + list);
+			
 		}
 
 		bw.write(Integer.toString(sum));
