@@ -1,12 +1,9 @@
-package com.test.test.doing;
+package com.test.test.success.backjoon.sliver.three;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.StringTokenizer;
 
 // https://www.acmicpc.net/problem/1051
@@ -29,15 +26,21 @@ public class NumSquare {
 			}
 		}
 
+		int max = 1;
 		for (int i = 0; i < arr.length; i++) {
 			for (int j = 0; j < arr[0].length; j++) {
-				for (int k = j + 1; k < arr[0].length; k++) {
+				int min = Math.min(arr.length - i, arr[0].length - j);
+				for (int k = 1; k < min; k++) {
 					boolean check = check(i, j, k);
-					System.out.println(check);
+					if (check) {
+						int sum = (int) Math.pow(k + 1, 2);
+						max = Math.max(sum, max);
+					}
 				}
 			}
-			System.out.println();
 		}
+		
+		bw.write(Integer.toString(max));
 
 		bw.flush();
 		bw.close();
@@ -46,7 +49,6 @@ public class NumSquare {
 	static int[][] arr;
 
 	static boolean check(int x, int y, int len) {
-		System.out.println(x + " / " + y + " / " + len);
 		return xCheck(x, y, len) && yCheck(x, y, len) && crossCheck(x, y, len);
 	}
 
