@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.math.BigInteger;
 
 // https://www.acmicpc.net/problem/1676
 public class FactoralZeroCount {
@@ -13,20 +14,44 @@ public class FactoralZeroCount {
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
 		int num = Integer.parseInt(br.readLine());
-
-		int sum = 1, count = 0;
-		for (int i = 1; i <= num; i++) {
-			sum *= i;
-			if (sum % 10 == 0) {
-				count++;
-				sum = sum / 10;
+		
+		if(num == 0) {
+			bw.write("1");
+		}else if(num <=4) {
+			bw.write("0");
+		}else {
+			BigInteger sum = new BigInteger("1");
+			for (int i = 1; i <= num; i++) {
+				BigInteger index = new BigInteger(Integer.toString(i));
+				sum = sum.multiply(index);
 			}
-			String str = Integer.toString(sum);
-			sum = Integer.parseInt(str.substring(str.length() - 1));
+
+			System.out.println(sum);
+			
+			BigInteger ten = new BigInteger("10");
+			BigInteger zero = new BigInteger("0");
+
+			while (true) {
+				if (!sum.remainder(ten).equals(zero)) {
+					sum = sum.divide(ten);
+				} else {
+					break;
+				}
+			}
+
+			int count = 0;
+			while (true) {
+				if (sum.remainder(ten).equals(zero)) {
+					count++;
+					sum = sum.divide(ten);
+				} else {
+					break;
+				}
+			}
+			
+			bw.write(Integer.toString(count));
 		}
 
-
-		bw.write(Integer.toString(count));
 		bw.flush();
 		bw.close();
 	}
