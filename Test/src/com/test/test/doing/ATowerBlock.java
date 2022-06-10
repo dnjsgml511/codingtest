@@ -22,8 +22,7 @@ public class ATowerBlock {
 
 		int max = 0;
 		for (int i = 0; i < N; i++) {
-			max = Math.max(max, check(i));
-			System.out.println();
+			check(i);
 		}
 
 		bw.write(Integer.toString(max));
@@ -44,32 +43,33 @@ public class ATowerBlock {
 			Point after = new Point(i, builds[i]);
 			BigDecimal x = new BigDecimal(after.x - target.x);
 			BigDecimal y = new BigDecimal(after.y - target.y);
-			
-			System.out.println(x + " / " + y);
-			
 			BigDecimal slope = x.divide(y);
-			if (slope.compareTo(min) <= 0) {
-				count++;
-				min = slope;
-			}
+			System.out.println(x + " / " + y + " => " + slope );
+//			if (slope.compareTo(min) <= 0) {
+//				count++;
+//				min = slope;
+//			}
 		}
 
-		min = new BigDecimal(Double.MIN_VALUE);
-		for (int i = idx + 1; i < N; i++) {
-			Point after = new Point(i, builds[i]);
-			BigDecimal x = new BigDecimal(target.x - after.x);
-			BigDecimal y = new BigDecimal(target.y - after.y);
-			BigDecimal slope = x.divide(y);
-
-			if (slope.compareTo(min) <= 0) {
-				count++;
-				min = slope;
-			}
-		}
+//		min = new BigDecimal(Double.MIN_VALUE);
+//		for (int i = idx + 1; i < N; i++) {
+//			Point after = new Point(i, builds[i]);
+//			BigDecimal x = new BigDecimal(target.x - after.x);
+//			BigDecimal y = new BigDecimal(target.y - after.y);
+//			BigDecimal slope = x.divide(y);
+//
+//			if (slope.compareTo(min) <= 0) {
+//				count++;
+//				min = slope;
+//			}
+//		}
 
 		return count;
 	}
 }
+
+//15
+//1 5 3 2 6 3 2 6 4 2 5 7 3 1 5
 
 //10
 //1000000000 999999999 999999998 999999997 999999996 1 2 3 4 5
