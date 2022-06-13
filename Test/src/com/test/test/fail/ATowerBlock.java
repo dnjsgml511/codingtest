@@ -1,4 +1,4 @@
-package com.test.test.doing;
+package com.test.test.fail;
 
 import java.awt.Point;
 import java.io.BufferedReader;
