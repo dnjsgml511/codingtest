@@ -35,7 +35,7 @@ public class LengthOfVisit {
 			switch (tmp) {
 			case 'L':
 				x--;
-				if (x == -1) {
+				if (x == -6) {
 					x++;
 					continue;
 				}
@@ -56,7 +56,7 @@ public class LengthOfVisit {
 				break;
 			case 'D':
 				y--;
-				if (y == 0) {
+				if (y == -6) {
 					y++;
 					continue;
 				}
@@ -73,8 +73,6 @@ public class LengthOfVisit {
 			set.add(sbB.toString());
 		}
 
-		System.out.println(set.size());
-		
 		return set.size() / 2;
 	}
 
